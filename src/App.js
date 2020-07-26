@@ -6,6 +6,7 @@ import './App.css';
 
 import ShopCart from './components/ShopCart';
 import CategoriesList from './components/CategoriesList';
+import ProductDetail from "./components/ProductDetail"
 
 function App() {
   api.getCategories().then(response => console.log(response))
@@ -25,6 +26,7 @@ function App() {
 
       <Switch>
         <Route path="/cart" component={ShopCart} />
+        <Route path="/products/:id" component={ProductDetail} />
       </Switch>
     </Router>
   );
