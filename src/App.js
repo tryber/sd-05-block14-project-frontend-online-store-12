@@ -1,6 +1,6 @@
 import React from 'react';
-import Lista from './lista-produtos';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Lista from './lista-produtos';
 import './App.css';
 import ShopCart from './components/ShopCart';
 import CategoriesList from './components/CategoriesList';
@@ -19,13 +19,12 @@ function App() {
           />
         </Link>
       </div>
-      
       <Switch>
         <Route path="/cart" component={ShopCart} />
         <Route path="/products/:id" component={ProductDetail} />
       </Switch>
     </Router>
   );
-};
+}
 
 export default App;
