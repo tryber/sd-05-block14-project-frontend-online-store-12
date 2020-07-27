@@ -15,14 +15,12 @@ class CategoriesList extends React.Component {
     const { categories } = this.state;
     return (
       <div>
-        {categories.map((categorie) => {
-          return (
+        {categories.map((categorie) => (
             <label data-testid="category" htmlFor={categorie.name}>
               {categorie.name}
               <input type="radio" id={categorie.id} name="produto" />
             </label>
-          );
-        })}
+        ))}
       </div>
     );
   }
