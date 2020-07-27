@@ -10,14 +10,21 @@ class CategoriesList extends React.Component {
   }
 
   componentDidMount() {
-    api.getCategories().then(response => this.setState({ categories: response }));
+    api.getCategories().then((response) => this.setState({ categories: response }));
   }
 
   render() {
     const { categories } = this.state;
     return (
       <div>
-        {categories.map((categorie) => <label data-testid="category">{categorie.name}<input type="radio" id={categorie.id} name="produto"/></label>)}
+        {categories.map((categorie) => {
+          return (
+            <label data-testid="category">
+              {categorie.name}
+              <input type="radio" id={categorie.id} name="produto"/>
+            </label>
+          );
+        })}
       </div>
     );
   }
