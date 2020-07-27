@@ -16,10 +16,10 @@ class CategoriesList extends React.Component {
     return (
       <div>
         {categories.map((categorie) => (
-            <label data-testid="category" htmlFor={categorie.name}>
-              {categorie.name}
-              <input type="radio" id={categorie.id} name="produto" />
-            </label>
+          <label data-testid="category" htmlFor={categorie.name}>
+            {categorie.name}
+            <input type="radio" id={categorie.id} name="produto" />
+          </label>
         ))}
       </div>
     );
