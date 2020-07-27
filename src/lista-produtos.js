@@ -28,7 +28,7 @@ class Lista extends Component {
       <div className="lista-produtos">
         <div className="categorias">
           {categories.map((categorie) => (
-            <CategoriesList key={categorie.name} categorie={categorie} />)
+            <CategoriesList key={categorie.name} categorie={categorie} />),
           )};
         </div>
         <div>
