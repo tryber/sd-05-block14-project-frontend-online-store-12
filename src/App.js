@@ -6,12 +6,12 @@ import ShopCart from './components/ShopCart';
 import CategoriesList from './components/CategoriesList';
 import ProductDetail from './components/ProductDetail';
 
-const App = () => {
+function App() {
   return (
     <Router>
       <div className="App">
         <CategoriesList />
-         <Lista />
+        <Lista />
         <Link data-testid="shopping-cart-button" to="/cart">
           <img
             src="https://img.icons8.com/ios/50/000000/add-shopping-cart.png"
@@ -25,6 +25,7 @@ const App = () => {
         <Route path="/products/:id" component={ProductDetail} />
       </Switch>
     </Router>
-  )
-}
+  );
+};
+
 export default App;
