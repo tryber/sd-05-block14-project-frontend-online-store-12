@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
-import * as api from './services/api';
 import './App.css';
-
 import ShopCart from './components/ShopCart';
 import CategoriesList from './components/CategoriesList';
 import ProductDetail from './components/ProductDetail';
