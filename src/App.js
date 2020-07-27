@@ -4,7 +4,7 @@ import './App.css';
 import Lista from './lista-produtos';
 
 function App() {
-  api.getCategories().then(categories => { console.log(categories) })
+  api.getCategories().then((categories) => { console.log(categories) });
   return (
     <div className="App">
     lalala
