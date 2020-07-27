@@ -5,7 +5,7 @@ import ShopCart from './components/ShopCart';
 import CategoriesList from './components/CategoriesList';
 import ProductDetail from './components/ProductDetail';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
