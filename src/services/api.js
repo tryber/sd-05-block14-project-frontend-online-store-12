@@ -11,7 +11,5 @@ export async function getProductsFromCategoryAndQuery(CATEGORY_ID, QUERY) {
     return await (await fetch(` https://api.mercadolibre.com/sites/MLB/search?category=${CATEGORY_ID}`)).json();
   } else if (CATEGORY_ID !== '' && QUERY !== '') {
      return await (await fetch(` https://api.mercadolibre.com/sites/MLB/search?category=${CATEGORY_ID}&q=${QUERY}`)).json();
-  } else {
-    console.log('ERRO, coloque parametros válidos');
-  }
+  } console.log('ERRO, coloque parametros válidos');  
 }

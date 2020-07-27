@@ -4,9 +4,7 @@ import * as api from '../services/api';
 class CategoriesList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      categories: [],
-    };
+    this.state = { categories: [] };
   }
 
   componentDidMount() {
