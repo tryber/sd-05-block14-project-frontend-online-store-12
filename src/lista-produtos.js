@@ -29,7 +29,7 @@ class Lista extends Component {
         <div className="categorias">
           {categories.map((categorie) => (
             <CategoriesList key={categorie.name} categorie={categorie} />)
-          )}
+          )};
         </div>
         <div>
           <p data-testid="home-initial-message">
