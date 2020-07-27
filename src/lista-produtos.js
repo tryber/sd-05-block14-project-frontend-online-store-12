@@ -15,9 +15,9 @@ class Lista extends Component {
     document.addEventListener('click', (event) => {
       if (event.target.id !== '') {
         api.getProductsFromCategoryAndQuery(event.target.id, document.querySelector('.search-input').value)
-        .then((response) => this.setState({ products: response.results}));
+        .then((response) => this.setState({ products: response.results }));
       }
-    })
+    });
 
     api.getCategories().then((response) => this.setState({ categories: response }));
   }
@@ -27,7 +27,9 @@ class Lista extends Component {
     return (
       <div className="lista-produtos">
         <div className="categorias">
-          {categories.map((categorie) => <CategoriesList key={categorie.name} categorie={categorie} />)}
+          {categories.map((categorie) => (
+            <CategoriesList key={categorie.name} categorie={categorie} />)
+          )}
         </div>
         <div>
           <p data-testid="home-initial-message">
