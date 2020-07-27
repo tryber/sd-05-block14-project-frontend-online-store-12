@@ -1,7 +1,7 @@
 import React from 'react';
-import * as api from './services/api'
+import * as api from './services/api';
 import './App.css';
-import Lista from './lista-produtos'
+import Lista from './lista-produtos';
 
 function App() {
   api.getCategories().then(categories => { console.log(categories) })
