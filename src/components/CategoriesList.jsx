@@ -1,8 +1,8 @@
 import React from 'react';
 
 class CategoriesList extends React.Component {
-    render() {
-      const { categorie: { name, id } } = this.props;
+  render() {
+    const { categorie: { name, id } } = this.props;
       return (
         <label key={name} data-testid="category" htmlFor={id} className="produto">
           {name}
@@ -11,5 +11,5 @@ class CategoriesList extends React.Component {
       );
     }
   }
-  
-  export default CategoriesList;
+
+export default CategoriesList;
