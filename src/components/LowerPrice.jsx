@@ -1,11 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import CategoriesList from './components/CategoriesList';
-import './lista-produtos.css';
-import ProductList from './components/ProductList';
-import * as api from './services/api';
+import React from 'react';
 
-class Lista extends Component {
+class LowerPrice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,4 +71,4 @@ class Lista extends Component {
   }
 }
 
-export default Lista;
+export default LowerPrice;
