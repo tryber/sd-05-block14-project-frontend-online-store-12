@@ -1,16 +1,20 @@
 import React from 'react';
+import * as api from '../services/api';
 
 class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { product: '' };
-    this.id = this.props.match.params.id;
   }
 
   componentDidMount() {
-    fetch(`https://www.mercadolibre.com.ar/p/${this.id}`)
-   .then((response) => response.json())
-   .then((item) => this.setState({ product: item }));
+    const { id } = this.props.match.params;
+    const itemId = this.props.location.pathname.split('/');
+    api.getProductsFromCategoryAndQuery(id, '')
+      .then((response) => response.results.map((result) => {
+        if (result.id === itemId[itemId.length - 1]) return this.setState({ product: result });
+        return '';
+      }));
   }
 
   render() {
@@ -19,11 +23,12 @@ class ProductDetail extends React.Component {
       <div>
         <h1 data-testid="produt-detail-name">{title}</h1>
         <img src={thumbnail} alt="Product" />
-        <p>Preço: R${price},00</p>
+        <p>Valor: R${price}</p>
         <p>Condição: {condition}</p>
         <button type="button">Adicionar ao carrinho</button>
       </div>
     );
   }
 }
+
 export default ProductDetail;

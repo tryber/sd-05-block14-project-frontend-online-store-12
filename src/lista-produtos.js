@@ -16,6 +16,7 @@ class Lista extends Component {
     this.searchText = this.searchText.bind(this);
     this.searchProduct = this.searchProduct.bind(this);
   }
+
   componentDidMount() {
     document.addEventListener('click', (event) => {
       if (event.target.id !== '') {
