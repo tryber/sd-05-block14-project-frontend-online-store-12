@@ -1,0 +1,15 @@
+.lista-produtos {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .categorias {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .produto {
+    margin-top: 10px;
+  }
+  
