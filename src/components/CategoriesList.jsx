@@ -10,5 +10,6 @@ class CategoriesList extends React.Component {
       </label>
     );
   }
+}
 
 export default CategoriesList;

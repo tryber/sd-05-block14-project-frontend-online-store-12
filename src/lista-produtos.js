@@ -38,7 +38,7 @@ class Lista extends Component {
   }
 
   render() {
-    const carrinhopng = "https://img.icons8.com/ios/50/000000/add-shopping-cart.png"
+    const carrinhopng = "https://img.icons8.com/ios/50/000000/add-shopping-cart.png";
     const { categories, products } = this.state;
     return (
       <div className="lista-produtos">
@@ -62,8 +62,8 @@ class Lista extends Component {
           Buscar
         </button>
         <Link data-testid="shopping-cart-button" to="/cart">
-        <img src={carrinhopng} alt="Carrinho de Compras" />
-        <ProductList products={products} />
+          <img src={carrinhopng} alt="Carrinho de Compras" />
+          <ProductList products={products} />
         </Link>
       </div>
     );
