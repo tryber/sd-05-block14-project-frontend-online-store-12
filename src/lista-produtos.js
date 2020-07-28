@@ -8,7 +8,13 @@ import * as api from './services/api';
 class Lista extends Component {
   constructor(props) {
     super(props);
-    this.state = { categories: [], products: [] };
+    this.state = {
+      searchText: '',
+      categories: [],
+      products: [],
+    };
+    this.searchText = this.searchText.bind(this);
+    this.searchProduct = this.searchProduct.bind(this);
   }
 
   componentDidMount() {
@@ -18,11 +24,21 @@ class Lista extends Component {
         .then((response) => this.setState({ products: response.results }));
       }
     });
-
     api.getCategories().then((response) => this.setState({ categories: response }));
   }
 
+  searchText(event) {
+    this.setState({ searchText: event.target.value });
+  }
+
+  searchProduct() {
+    const { searchText } = this.state;
+    api.getProductsFromCategoryAndQuery('', searchText)
+    .then((response) => this.setState({ products: response.results }));
+  }
+
   render() {
+    const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
     const { categories, products } = this.state;
     return (
       <div className="lista-produtos">
@@ -31,18 +47,23 @@ class Lista extends Component {
             <CategoriesList key={categorie.name} categorie={categorie} />),
           )};
         </div>
-        <div>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <input className="search-input" type="text" placeholder="" />
-          <ProductList products={products} />
-        </div>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
+        <input
+          className="search-input"
+          type="text"
+          placeholder=""
+          data-testid="query-input"
+          onChange={this.searchText}
+          value={this.state.searchText}
+        />
+        <button type="button" data-testid="query-button" onClick={this.searchProduct}>
+          Buscar
+        </button>
         <Link data-testid="shopping-cart-button" to="/cart">
-          <img
-            src="https://img.icons8.com/ios/50/000000/add-shopping-cart.png"
-            alt="Carrinho de Compras"
-          />
+          <img src={carrinhopng} alt="Carrinho de Compras" />
+          <ProductList products={products} />
         </Link>
       </div>
     );
