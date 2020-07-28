@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   render() {
-    const { title, price, thumbnail, id, category_id } = this.props.product;
-    const categoryId = category_id;
+    const { title, price, thumbnail, id } = this.props.product;
+    const categoryId = this.props.product.category_id;
     return (
       <div>
         <p data-testid="product">{title}</p>
