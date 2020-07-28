@@ -21,7 +21,7 @@ class Lista extends Component {
     document.addEventListener('click', (event) => {
       if (event.target.id !== '') {
         api.getProductsFromCategoryAndQuery(event.target.id, document.querySelector('.search-input').value)
-        .then((response) => this.setState({ products: response.results }));
+          .then((response) => this.setState({ products: response.results }));
       }
     });
     api.getCategories().then((response) => this.setState({ categories: response }));
@@ -34,7 +34,7 @@ class Lista extends Component {
   searchProduct() {
     const { searchText } = this.state;
     api.getProductsFromCategoryAndQuery('', searchText)
-    .then((response) => this.setState({ products: response.results }));
+      .then((response) => this.setState({ products: response.results }));
   }
 
   render() {
@@ -47,23 +47,25 @@ class Lista extends Component {
             <CategoriesList key={categorie.name} categorie={categorie} />),
           )};
         </div>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <input
-          className="search-input"
-          type="text"
-          placeholder=""
-          data-testid="query-input"
-          onChange={this.searchText}
-          value={this.state.searchText}
-        />
-        <button type="button" data-testid="query-button" onClick={this.searchProduct}>
-          Buscar
-        </button>
+        <div>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <input
+            className="search-input"
+            type="text"
+            placeholder=""
+            data-testid="query-input"
+            onChange={this.searchText}
+            value={this.state.searchText}
+          />
+          <button type="button" data-testid="query-button" onClick={this.searchProduct}>
+            Buscar
+          </button>
+          <ProductList products={products} />
+        </div>
         <Link data-testid="shopping-cart-button" to="/cart">
           <img src={carrinhopng} alt="Carrinho de Compras" />
-          <ProductList products={products} />
         </Link>
       </div>
     );
