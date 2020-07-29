@@ -38,7 +38,7 @@ class ProductDetail extends React.Component {
       const produtoNoCarrinho = carrinhoCompras.some((produto) => produto.id === product.id);
 
       if (produtoNoCarrinho) {
-        carrinhoCompras.map((produto) => {
+        carrinhoCompras.forEach((produto) => {
           if (produto.id === product.id) {
             produto.quantidade += 1;
             return localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
@@ -57,7 +57,6 @@ class ProductDetail extends React.Component {
       localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
     }
   }
-
 
   render() {
     const { title, price, condition, thumbnail } = this.state.product;
