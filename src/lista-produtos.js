@@ -17,6 +17,7 @@ class Lista extends Component {
     this.searchText = this.searchText.bind(this);
     this.searchProduct = this.searchProduct.bind(this);
   }
+
   componentDidMount() {
     document.addEventListener('click', (event) => {
       if (event.target.id !== '') {
@@ -38,7 +39,7 @@ class Lista extends Component {
   }
 
   render() {
-    const carrinhopng = "https://img.icons8.com/ios/50/000000/add-shopping-cart.png"
+    const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
     const { categories, products } = this.state;
     return (
       <div className="lista-produtos">

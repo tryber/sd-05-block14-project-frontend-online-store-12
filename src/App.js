@@ -5,7 +5,6 @@ import './App.css';
 import ShopCart from './components/ShopCart';
 import ProductDetail from './components/ProductDetail';
 
-
 function App() {
   return (
     <div className="App">
