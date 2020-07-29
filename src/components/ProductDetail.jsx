@@ -21,13 +21,12 @@ class ProductDetail extends React.Component {
   }
 
   sumContador() {
-    this.setState({ contador: (this.state.contador + 1) });
-    return '';
+    return this.setState({ contador: (this.state.contador + 1) });
   }
 
   substrairContador() {
     if (this.state.contador === 0) return this.setState({ contador: 0 });
-    this.setState({ contador: (this.state.contador - 1) });
+    return this.setState({ contador: (this.state.contador - 1) });
   }
 
   addToCart() {

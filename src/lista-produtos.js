@@ -38,26 +38,22 @@ class Lista extends Component {
   }
 
   render() {
-    const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
     const { categories, products } = this.state;
     return (
       <div className="lista-produtos">
         <div className="categorias">
-          {categories.map((categorie) => (
-            <CategoriesList key={categorie.name} categorie={categorie} />),
-          )};
+          {categories.map((categorie) => <CategoriesList key={categorie.name} categorie={categorie} />)};
         </div>
         <div>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <input className="search-input" type="text" placeholder="" data-testid="query-input"
+          <p data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</p>
+          <input
+            className="search-input"
+            type="text"
+            data-testid="query-input"
             onChange={this.searchText}
             value={this.state.searchText}
           />
-          <button type="button" data-testid="query-button" onClick={this.searchProduct}>
-            Buscar
-          </button>
+          <button type="button" data-testid="query-button" onClick={this.searchProduct}>Buscar</button>
           <select name="select">
             <option>Menores Preços</option>
             <option>Maiores Preços</option>
@@ -65,7 +61,7 @@ class Lista extends Component {
           <ProductList products={products} />
         </div>
         <Link data-testid="shopping-cart-button" to="/cart">
-          <img src={carrinhopng} alt="Carrinho de Compras" />
+          <img src="https://img.icons8.com/ios/50/000000/add-shopping-cart.png" alt="Carrinho de Compras" />
         </Link>
       </div>
     );
