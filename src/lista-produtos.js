@@ -51,11 +51,7 @@ class Lista extends Component {
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
-          <input
-            className="search-input"
-            type="text"
-            placeholder=""
-            data-testid="query-input"
+          <input className="search-input" type="text" placeholder="" data-testid="query-input"
             onChange={this.searchText}
             value={this.state.searchText}
           />

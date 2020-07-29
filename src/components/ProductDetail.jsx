@@ -22,6 +22,7 @@ class ProductDetail extends React.Component {
 
   sumContador() {
     this.setState({ contador: (this.state.contador + 1) });
+    return '';
   }
 
   substrairContador() {
@@ -40,14 +41,15 @@ class ProductDetail extends React.Component {
       if (produtoNoCarrinho) {
         carrinhoCompras = carrinhoCompras.map((produto) => {
           if (produto.id === product.id) {
-            produto['quantidade'] += 1;
+            produto["quantidade"] += 1;
             localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+            return '';
           }
         });
       }
 
       else {
-        product['quantidade'] = 1;
+        product["quantidade"] = 1;
         carrinhoCompras.push(product);
         localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
       }
@@ -55,11 +57,11 @@ class ProductDetail extends React.Component {
 
     else {
       carrinhoCompras = [];
-      product['quantidade'] = 1;
+      product["quantidade"] = 1;
       carrinhoCompras.push(product);
       localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
     }
-  };
+  }
 
 
   render() {
@@ -78,7 +80,12 @@ class ProductDetail extends React.Component {
             <button onClick={this.substrairContador}>-</button>
             <span>{this.state.contador}</span>
             <button onClick={this.sumContador}>+</button>
-            <button data-testid="product-detail-add-to-cart" type="button" onClick={this.addToCart}>Adicionar ao carrinho</button>
+            <button
+              data-testid="product-detail-add-to-cart"
+              type="button"
+              onClick={this.addToCart}>
+              Adicionar ao carrinho
+            </button>
           </div>
         </div>
       </div>
