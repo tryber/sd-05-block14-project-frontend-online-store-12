@@ -1,6 +1,6 @@
 import React from 'react';
 import * as api from '../services/api';
-import Evaluation from 'src/form-avaliacao';
+import Evaluation from '../form-avaliacao';
 
 class ProductDetail extends React.Component {
   constructor(props) {
