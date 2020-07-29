@@ -32,7 +32,7 @@ class ProductDetail extends React.Component {
   addToCart() {
     const { product } = this.state;
 
-    const carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
+    let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
 
     if (carrinhoCompras !== null) {
       const produtoNoCarrinho = carrinhoCompras.some((produto) => produto.id === product.id);
