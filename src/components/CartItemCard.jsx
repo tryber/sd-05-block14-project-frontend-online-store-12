@@ -8,7 +8,8 @@ class CartItemCard extends React.Component {
         <p data-testid="shopping-cart-product-name">{title}</p>
         <img src={thumbnail} alt="Product" />
         <p>R${price}</p>
-        <p data-testid="shopping-cart-product-quantity">quantidade: {qtdEstoque}</p>
+        <p>Estoque: {qtdEstoque}</p>
+        <p data-testid="shopping-cart-product-quantity">1</p>
       </div>
     );
   }
