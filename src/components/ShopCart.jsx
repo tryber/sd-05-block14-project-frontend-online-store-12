@@ -19,7 +19,7 @@ class ShopCart extends React.Component {
 
   render() {
     if (this.state.cartItems.length === 0) {
-      return <p>Seu carrinho está vazio</p>;
+      return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
     }
     return (
       <div>

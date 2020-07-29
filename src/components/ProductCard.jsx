@@ -39,8 +39,8 @@ class ProductCard extends React.Component {
     return (
       <div>
         <p data-testid="product">{title}</p>
-        <img data-testid="product" src={thumbnail} alt="Product" />
-        <p data-testid="product">R${price}</p>
+        <img src={thumbnail} alt="Product" />
+        <p>R${price}</p>
         <Link to={`products/${categoryId}/${id}`} data-testid="product-detail-link">Detalhes</Link>
         <button
           type="button"
