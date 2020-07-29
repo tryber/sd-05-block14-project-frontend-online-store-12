@@ -40,10 +40,12 @@ class Lista extends Component {
   }
 
   renderCategorias() {
-    const { categories } = this.state
+    const { categories } = this.state;
     return (
       <div className="categorias">
-        {categories.map((categorie) => <CategoriesList key={categorie.name} categorie={categorie} />)};
+        {categories.map((categorie) => (
+          <CategoriesList key={categorie.name} categorie={categorie} />
+        ))};
       </div>
     );
   }
@@ -61,7 +63,7 @@ class Lista extends Component {
   }
 
   render() {
-    const { categories, products } = this.state;
+    const { products } = this.state;
     return (
       <div className="lista-produtos">
         {this.renderCategorias()}
