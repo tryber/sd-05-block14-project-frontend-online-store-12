@@ -4,6 +4,7 @@ import CategoriesList from './components/CategoriesList';
 import './lista-produtos.css';
 import ProductList from './components/ProductList';
 import * as api from './services/api';
+import SearchBar from './components/SearchBar';
 
 class Lista extends Component {
   constructor(props) {
@@ -46,24 +47,22 @@ class Lista extends Component {
             <CategoriesList key={categorie.name} categorie={categorie} />),
           )};
         </div>
+        <div>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <input
-          className="search-input"
-          type="text"
-          placeholder=""
-          data-testid="query-input"
-          onChange={this.searchText}
-          value={this.state.searchText}
+        <SearchBar 
+          searchProduct={this.searchProduct}
+          onSearchTextChange={this.searchText}
+          searchText={this.state.searchText}
         />
-        <button type="button" data-testid="query-button" onClick={this.searchProduct}>
-          Buscar
-        </button>
+        </div>
         <Link data-testid="shopping-cart-button" to="/cart">
         <img src={carrinhopng} alt="Carrinho de Compras" />
-        <ProductList products={products} />
         </Link>
+        <div>
+        <ProductList products={products} />
+        </div>
       </div>
     );
   }
