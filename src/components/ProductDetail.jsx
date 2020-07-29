@@ -40,15 +40,15 @@ class ProductDetail extends React.Component {
       if (produtoNoCarrinho) {
         carrinhoCompras = carrinhoCompras.map((produto) => {
           if (produto.id === product.id) {
-            produto["quantidade"] += 1;
-            localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
-            return '';
+            produto.quantidade += 1;
+            return localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
           }
+          return '';
         });
       }
 
       else {
-        product["quantidade"] = 1;
+        product.quantidade = 1;
         carrinhoCompras.push(product);
         localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
       }
@@ -56,7 +56,7 @@ class ProductDetail extends React.Component {
 
     else {
       carrinhoCompras = [];
-      product["quantidade"] = 1;
+      product.quantidade = 1;
       carrinhoCompras.push(product);
       localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
     }
