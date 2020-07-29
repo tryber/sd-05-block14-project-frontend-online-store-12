@@ -30,9 +30,9 @@ class ProductDetail extends React.Component {
           <p>Condição: {condition}</p>
           <button type="button">Adicionar ao carrinho</button>
         </div>
-        <section>
+        <div>
           <Evaluation />
-        </section>
+        </div>
       </div>
     );
   }
