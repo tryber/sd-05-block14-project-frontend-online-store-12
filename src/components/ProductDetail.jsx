@@ -22,12 +22,16 @@ class ProductDetail extends React.Component {
     const { title, price, condition, thumbnail } = this.state.product;
     return (
       <div>
+      <div>
         <h1 data-testid="produt-detail-name">{title}</h1>
         <img src={thumbnail} alt="Product" />
         <p>Valor: R${price}</p>
         <p>Condição: {condition}</p>
         <button type="button">Adicionar ao carrinho</button>
+      </div>
+      <section>
         <Evaluation />
+      </section>
       </div>
     );
   }
