@@ -49,20 +49,20 @@ class Lista extends Component {
           )};
         </div>
         <div>
-        <p data-testid="home-initial-message">
+          <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <SearchBar 
-          searchProduct={this.searchProduct}
-          onSearchTextChange={this.searchText}
-          searchText={this.state.searchText}
-        />
+          </p>
+          <SearchBar
+            searchProduct={this.searchProduct}
+            onSearchTextChange={this.searchText}
+            searchText={this.state.searchText}
+          />
         </div>
         <Link data-testid="shopping-cart-button" to="/cart">
-        <img src={carrinhopng} alt="Carrinho de Compras" />
+          <img src={carrinhopng} alt="Carrinho de Compras" />
         </Link>
         <div>
-        <ProductList products={products} />
+          <ProductList products={products} />
         </div>
       </div>
     );
