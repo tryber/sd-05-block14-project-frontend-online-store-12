@@ -32,7 +32,7 @@ class ProductDetail extends React.Component {
   addToCart() {
     const { product } = this.state;
 
-    let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
+    const carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
 
     if (carrinhoCompras !== null) {
       const produtoNoCarrinho = carrinhoCompras.some((produto) => produto.id === product.id);
@@ -40,21 +40,17 @@ class ProductDetail extends React.Component {
       if (produtoNoCarrinho) {
         carrinhoCompras = carrinhoCompras.map((produto) => {
           if (produto.id === product.id) {
-            produto.quantidade += 1;
+            produto.quantidade = produto.quantidade + 1;
             return localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
           }
           return '';
         });
-      }
-
-      else {
+      } else {
         product.quantidade = 1;
         carrinhoCompras.push(product);
         localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
       }
-    }
-
-    else {
+    } else {
       carrinhoCompras = [];
       product.quantidade = 1;
       carrinhoCompras.push(product);
@@ -82,9 +78,8 @@ class ProductDetail extends React.Component {
             <button
               data-testid="product-detail-add-to-cart"
               type="button"
-              onClick={this.addToCart}>
-              Adicionar ao carrinho
-            </button>
+              onClick={this.addToCart}
+            >Adicionar ao carrinho</button>
           </div>
         </div>
       </div>
