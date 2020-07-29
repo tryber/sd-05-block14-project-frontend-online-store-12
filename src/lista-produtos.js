@@ -15,6 +15,8 @@ class Lista extends Component {
     };
     this.searchText = this.searchText.bind(this);
     this.searchProduct = this.searchProduct.bind(this);
+    this.renderCategorias = this.renderCategorias.bind(this);
+    this.renderSearchButton = this.renderSearchButton.bind(this);
   }
 
   componentDidMount() {
@@ -37,15 +39,36 @@ class Lista extends Component {
       .then((response) => this.setState({ products: response.results }));
   }
 
+  renderCategorias() {
+    const { categories } = this.state
+    return (
+      <div className="categorias">
+        {categories.map((categorie) => <CategoriesList key={categorie.name} categorie={categorie} />)};
+      </div>
+    );
+  }
+
+  renderSearchButton() {
+    return (
+      <button
+        type="button"
+        data-testid="query-button"
+        onClick={this.searchProduct}
+      >
+        Buscar
+      </button>
+    );
+  }
+
   render() {
     const { categories, products } = this.state;
     return (
       <div className="lista-produtos">
-        <div className="categorias">
-          {categories.map((categorie) => <CategoriesList key={categorie.name} categorie={categorie} />)};
-        </div>
+        {this.renderCategorias()}
         <div>
-          <p data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</p>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
           <input
             className="search-input"
             type="text"
@@ -53,7 +76,7 @@ class Lista extends Component {
             onChange={this.searchText}
             value={this.state.searchText}
           />
-          <button type="button" data-testid="query-button" onClick={this.searchProduct}>Buscar</button>
+          {this.renderSearchButton()}
           <select name="select">
             <option>Menores Preços</option>
             <option>Maiores Preços</option>
