@@ -5,12 +5,16 @@ class ShopCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = { products: [] };
+    this.carregarDados = this.carregarDados.bind(this);
+  }
+
+  carregarDados() {
+    const carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
+    this.setState({ products: carrinhoCompras });
   }
 
   componentDidMount() {
-    let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
-    console.log(carrinhoCompras);
-    this.setState({ products: carrinhoCompras });
+    this.carregarDados();
   }
 
   render() {
@@ -22,11 +26,9 @@ class ShopCart extends React.Component {
         </div>
       );
     }
-    else {
-      return (
-        <div data-testid="shopping-cart-empty-message">Seu carrinho está vazio</div>
-      );
-    }
+    return (
+      <div data-testid="shopping-cart-empty-message">Seu carrinho está vazio</div>
+    );
   }
 }
 
