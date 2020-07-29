@@ -1,5 +1,6 @@
 import React from 'react';
 import * as api from '../services/api';
+import Evaluation from 'src/form-avaliacao';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ProductDetail extends React.Component {
         <p>Valor: R${price}</p>
         <p>Condição: {condition}</p>
         <button type="button">Adicionar ao carrinho</button>
+        <Evaluation />
       </div>
     );
   }
