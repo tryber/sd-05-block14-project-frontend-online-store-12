@@ -8,13 +8,13 @@ class ShopCart extends React.Component {
     this.carregarDados = this.carregarDados.bind(this);
   }
 
+  componentDidMount() {
+    this.carregarDados();
+  }
+
   carregarDados() {
     const carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
     this.setState({ products: carrinhoCompras });
-  }
-
-  componentDidMount() {
-    this.carregarDados();
   }
 
   render() {
