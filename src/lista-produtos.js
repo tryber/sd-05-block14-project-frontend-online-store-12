@@ -4,6 +4,7 @@ import CategoriesList from './components/CategoriesList';
 import './lista-produtos.css';
 import ProductList from './components/ProductList';
 import * as api from './services/api';
+import SearchBar from './components/SearchBar';
 
 class Lista extends Component {
   constructor(props) {
@@ -61,18 +62,6 @@ class Lista extends Component {
     );
   }
 
-  renderSearchButton() {
-    return (
-      <button
-        type="button"
-        data-testid="query-button"
-        onClick={this.searchProduct}
-      >
-        Buscar
-      </button>
-    );
-  }
-
   renderProductList() {
     const { products } = this.state;
     if (this.state.ordenacao === '/') {
@@ -96,14 +85,11 @@ class Lista extends Component {
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
-          <input
-            className="search-input"
-            type="text"
-            data-testid="query-input"
-            onChange={this.searchText}
-            value={this.state.searchText}
+          <SearchBar
+            searchProduct={this.searchProduct}
+            onSearchTextChange={this.searchText}
+            searchText={this.state.searchText}
           />
-          {this.renderSearchButton()}
           <select name="select">
             <option value="/" selected>Ordenar por Preço</option>
             <option value="/ordenacao=lowerPrice">Menores Preços</option>
@@ -114,6 +100,9 @@ class Lista extends Component {
         <Link data-testid="shopping-cart-button" to="/cart">
           <img src={carrinhopng} alt="Carrinho de Compras" />
         </Link>
+        <div>
+          <ProductList products={products} />
+        </div>
       </div>
     );
   }
