@@ -18,7 +18,6 @@ class Lista extends Component {
     this.searchText = this.searchText.bind(this);
     this.searchProduct = this.searchProduct.bind(this);
     this.renderCategorias = this.renderCategorias.bind(this);
-    this.renderSearchButton = this.renderSearchButton.bind(this);
     this.renderProductList = this.renderProductList.bind(this);
   }
 
@@ -100,9 +99,6 @@ class Lista extends Component {
         <Link data-testid="shopping-cart-button" to="/cart">
           <img src={carrinhopng} alt="Carrinho de Compras" />
         </Link>
-        <div>
-          <ProductList products={products} />
-        </div>
       </div>
     );
   }
