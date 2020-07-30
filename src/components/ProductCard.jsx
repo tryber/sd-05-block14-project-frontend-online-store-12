@@ -8,39 +8,47 @@ class ProductCard extends React.Component {
   }
 
   addToCart() {
+    const { product } = this.props;
+
     let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
-    const { title, price, condition, thumbnail, id } = this.props.product;
-    const categoryId = this.props.product.category_id;
-    const qtdEstoque = this.props.product.available_quantity;
-    function carrinhopush() {
-      carrinhoCompras.push({
-        title,
-        price,
-        condition,
-        thumbnail,
-        id,
-        categoryId,
-        qtdEstoque,
-      });
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
-    }
 
     if (carrinhoCompras !== null) {
-      carrinhopush();
+      const produtoNoCarrinho = carrinhoCompras.some((produto) => produto.id === product.id);
+
+      if (produtoNoCarrinho) {
+        let index = 0;
+        carrinhoCompras.map((produto, i) => {
+          if (produto.id === product.id) {
+            index = i;
+            return '';
+          }
+          return '';
+        });
+        carrinhoCompras[index].quantidade += 1;
+        localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      } else {
+        product.quantidade = 1;
+        carrinhoCompras.push(product);
+        localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      }
     } else {
       carrinhoCompras = [];
-      carrinhopush();
+      product.quantidade = 1;
+      carrinhoCompras.push(product);
+      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
     }
   }
 
   render() {
     const { title, price, thumbnail, id } = this.props.product;
     const categoryId = this.props.product.category_id;
+    const qtdEstoque = this.props.product.available_quantity;
     return (
       <div>
         <p data-testid="product">{title}</p>
         <img src={thumbnail} alt="Product" />
         <p>R${price}</p>
+        <p>Estoque disponível: {qtdEstoque}</p>
         <Link to={`products/${categoryId}/${id}`} data-testid="product-detail-link">Detalhes</Link>
         <button
           type="button"
