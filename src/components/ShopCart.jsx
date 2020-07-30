@@ -19,15 +19,13 @@ class ShopCart extends React.Component {
 
   render() {
     const { products } = this.state;
-    if (products !== null) {
-      return (
-        <div>
-          <ProductListCart products={products} />
-        </div>
-      );
+    if (products === null) {
+      return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
     }
     return (
-      <div data-testid="shopping-cart-empty-message">Seu carrinho está vazio</div>
+      <div>
+        <ProductListCart products={products} />
+      </div>
     );
   }
 }
