@@ -3,7 +3,7 @@ import './ProductCardCart.css';
 
 class ProductCardCart extends React.Component {
   render() {
-    const { title, price, thumbnail, quantidade } = this.props.product;
+    const { title, price, thumbnail } = this.props.product;
 
     return (
       <div className="card-carrinho">

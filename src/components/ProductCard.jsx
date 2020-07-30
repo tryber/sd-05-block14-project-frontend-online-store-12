@@ -8,7 +8,7 @@ class ProductCard extends React.Component {
   }
 
   addToCart() {
-    const { product } = this.props
+    const { product } = this.props;
 
     let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
 
