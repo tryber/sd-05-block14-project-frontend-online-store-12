@@ -76,17 +76,16 @@ class Lista extends Component {
       return <ProductList products={products} />;
     } else if (this.state.ordenacao === '/ordenacao=lowerPrice') {
       const menorPreco = products.slice(0);
-      menorPreco.sort(function(a, b) {
+      menorPreco.sort(function (a, b) {
         return a.price - b.price;
       });
       return <ProductList products={menorPreco} />;
-    } else {
-      const maiorPreco = products.slice(0);
-      maiorPreco.sort(function(a, b) {
-        return b.price - a.price;
-      });
-      return <ProductList products={maiorPreco} />;
     }
+    const maiorPreco = products.slice(0);
+    maiorPreco.sort(function (a, b) {
+      return b.price - a.price;
+    });
+    return <ProductList products={maiorPreco} />;
   }
 
   render() {
