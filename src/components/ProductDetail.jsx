@@ -30,17 +30,28 @@ class ProductDetail extends React.Component {
   }
 
   addToCart() {
-    const { product } = this.state;
-
     let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
+    const { title, price, condition, thumbnail, id } = this.state.product;
+    const categoryId = this.state.product.category_id;
+    const qtdEstoque = this.state.product.available_quantity;
+    function carrinhopush() {
+      carrinhoCompras.push({
+        title,
+        price,
+        condition,
+        thumbnail,
+        id,
+        categoryId,
+        qtdEstoque,
+      });
+      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+    }
 
     if (carrinhoCompras !== null) {
-      carrinhoCompras.push(product);
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      carrinhopush();
     } else {
       carrinhoCompras = [];
-      carrinhoCompras.push(product);
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      carrinhopush();
     }
   }
 

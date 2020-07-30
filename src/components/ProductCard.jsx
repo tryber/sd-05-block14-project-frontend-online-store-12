@@ -8,17 +8,28 @@ class ProductCard extends React.Component {
   }
 
   addToCart() {
-    const { product } = this.props;
-
     let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
+    const { title, price, condition, thumbnail, id } = this.props.product;
+    const categoryId = this.props.product.category_id;
+    const qtdEstoque = this.props.product.available_quantity;
+    function carrinhopush() {
+      carrinhoCompras.push({
+        title,
+        price,
+        condition,
+        thumbnail,
+        id,
+        categoryId,
+        qtdEstoque,
+      });
+      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+    }
 
     if (carrinhoCompras !== null) {
-      carrinhoCompras.push(product);
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      carrinhopush();
     } else {
       carrinhoCompras = [];
-      carrinhoCompras.push(product);
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      carrinhopush();
     }
   }
 
