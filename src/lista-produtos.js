@@ -32,7 +32,7 @@ class Lista extends Component {
     document.querySelector('select').addEventListener('change', () => {
       const options = document.querySelectorAll('option');
       options.forEach((option) => option.selected ? this.setState({ ordenacao: option.value }) : '');
-    })
+    });
 
     api.getCategories().then((response) => this.setState({ categories: response }));
   }
@@ -74,18 +74,17 @@ class Lista extends Component {
     const { products } = this.state;
     if (this.state.ordenacao === '/') {
       return <ProductList products={products} />;
-    }
-    else if (this.state.ordenacao === '/ordenacao=lowerPrice') {
+    } else if (this.state.ordenacao === '/ordenacao=lowerPrice') {
       const menorPreco = products.slice(0);
       menorPreco.sort(function(a, b) {
         return a.price - b.price;
-      })
+      });
       return <ProductList products={menorPreco} />;
     } else {
       const maiorPreco = products.slice(0);
       maiorPreco.sort(function(a, b) {
         return b.price - a.price;
-      })
+      });
       return <ProductList products={maiorPreco} />;
     }
   }
