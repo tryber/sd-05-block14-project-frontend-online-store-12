@@ -7,10 +7,9 @@ class ProductCardCart extends React.Component {
 
     return (
       <div className="card-carrinho">
-        <p>Quantidade no carrinho: {quantidade}</p>
         <p>{title}</p>
         <img src={thumbnail} alt="Product" />
-        <p>R${price * quantidade}</p>
+        <p>R${price}</p>
       </div>
     );
   }
