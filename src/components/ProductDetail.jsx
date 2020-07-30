@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as api from '../services/api';
 
 class ProductDetail extends React.Component {
@@ -62,11 +63,12 @@ class ProductDetail extends React.Component {
   }
 
   render() {
+    const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
     const { title, price, condition, thumbnail } = this.state.product;
     const qtdEstoque = this.state.product.available_quantity;
     return (
       <div>
-        <h1 data-testid="produt-detail-name">{title}</h1>
+        <h1 data-testid="product-detail-name">{title}</h1>
         <img src={thumbnail} alt="Product" />
         <p>Valor: R${price}</p>
         <p>Condição: {condition}</p>
@@ -82,6 +84,9 @@ class ProductDetail extends React.Component {
               type="button"
               onClick={this.addToCart}
             >Adicionar ao carrinho</button>
+            <Link data-testid="shopping-cart-button" to="/cart">
+              <img src={carrinhopng} alt="Carrinho de Compras" />
+            </Link>
           </div>
         </div>
       </div>
