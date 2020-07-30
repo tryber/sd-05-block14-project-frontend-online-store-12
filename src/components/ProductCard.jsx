@@ -12,7 +12,7 @@ class ProductCard extends React.Component {
         <img data-testid="product" src={thumbnail} alt="Product" />
         <p data-testid="product">R${price}</p>
         <p>Estoque disponível: {qtdEstoque}</p>
-        <Link to={`products/${categoryId}/${id}`} data-testid="product-detail-link">Detalhes</Link>
+        <Link data-testid="product-detail-link" to={`products/${categoryId}/${id}`}>Detalhes</Link>
       </div>
     );
   }
