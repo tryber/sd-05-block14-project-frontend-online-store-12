@@ -62,6 +62,7 @@ class ProductDetail extends React.Component {
     }
   }
 
+
   render() {
     const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
     const { title, price, condition, thumbnail } = this.state.product;

@@ -3,12 +3,12 @@ import './ProductCardCart.css';
 
 class ProductCardCart extends React.Component {
   render() {
-    const { title, price, thumbnail } = this.props.product;
+    const { title, price, thumbnail, quantidade } = this.props.product;
 
     return (
       <div className="card-carrinho">
-        <p data-testid="shopping-cart-product-quantity">1</p>
         <p data-testid="shopping-cart-product-name">{title}</p>
+        <p data-testid="shopping-cart-product-quantity">{quantidade}</p>
         <img src={thumbnail} alt="Product" />
         <p>R${price}</p>
       </div>

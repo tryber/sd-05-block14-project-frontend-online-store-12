@@ -8,28 +8,34 @@ class ProductCard extends React.Component {
   }
 
   addToCart() {
+    const { product } = this.props;
+
     let carrinhoCompras = JSON.parse(localStorage.getItem('carrinhoCompras'));
-    const { title, price, condition, thumbnail, id } = this.props.product;
-    const categoryId = this.props.product.category_id;
-    const qtdEstoque = this.props.product.available_quantity;
-    function carrinhopush() {
-      carrinhoCompras.push({
-        title,
-        price,
-        condition,
-        thumbnail,
-        id,
-        categoryId,
-        qtdEstoque,
-      });
-      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
-    }
 
     if (carrinhoCompras !== null) {
-      carrinhopush();
+      const produtoNoCarrinho = carrinhoCompras.some((produto) => produto.id === product.id);
+
+      if (produtoNoCarrinho) {
+        let index = 0;
+        carrinhoCompras.map((produto, i) => {
+          if (produto.id === product.id) {
+            index = i;
+            return '';
+          }
+          return '';
+        });
+        carrinhoCompras[index].quantidade += 1;
+        localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      } else {
+        product.quantidade = 1;
+        carrinhoCompras.push(product);
+        localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
+      }
     } else {
       carrinhoCompras = [];
-      carrinhopush();
+      product.quantidade = 1;
+      carrinhoCompras.push(product);
+      localStorage.setItem('carrinhoCompras', JSON.stringify(carrinhoCompras));
     }
   }
 
