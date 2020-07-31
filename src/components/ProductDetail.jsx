@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../services/api';
+import Evaluation from '../form-avaliacao';
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class ProductDetail extends React.Component {
     this.sumContador = this.sumContador.bind(this);
     this.substrairContador = this.substrairContador.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.buttonadd = this.buttonadd.bind(this);
   }
 
   componentDidMount() {
@@ -62,6 +64,16 @@ class ProductDetail extends React.Component {
     }
   }
 
+  buttonadd() {
+    return (
+      <button
+        data-testid="product-detail-add-to-cart"
+        type="button"
+        onClick={this.addToCart}
+      >Adicionar ao carrinho</button>
+    );
+  }
+
 
   render() {
     const carrinhopng = 'https://img.icons8.com/ios/50/000000/add-shopping-cart.png';
@@ -80,14 +92,13 @@ class ProductDetail extends React.Component {
             <button onClick={this.substrairContador}>-</button>
             <span>{this.state.contador}</span>
             <button onClick={this.sumContador}>+</button>
-            <button
-              data-testid="product-detail-add-to-cart"
-              type="button"
-              onClick={this.addToCart}
-            >Adicionar ao carrinho</button>
+            {this.buttonadd()}
             <Link data-testid="shopping-cart-button" to="/cart">
               <img src={carrinhopng} alt="Carrinho de Compras" />
             </Link>
+          </div>
+          <div>
+            <Evaluation />
           </div>
         </div>
       </div>
