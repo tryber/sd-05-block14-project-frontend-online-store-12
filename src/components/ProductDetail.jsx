@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as api from '../services/api';
+import Evaluation from '../form-avaliacao'
 
 class ProductDetail extends React.Component {
   constructor(props) {
@@ -88,6 +89,9 @@ class ProductDetail extends React.Component {
             <Link data-testid="shopping-cart-button" to="/cart">
               <img src={carrinhopng} alt="Carrinho de Compras" />
             </Link>
+          </div>
+          <div>
+            <Evaluation />
           </div>
         </div>
       </div>
