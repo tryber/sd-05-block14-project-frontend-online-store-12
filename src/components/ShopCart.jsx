@@ -4,20 +4,18 @@ import ProductListCart from './ProductListCart';
 class ShopCart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], items: 0 };
+    this.state = { products: [] };
     this.carregarDados = this.carregarDados.bind(this);
-    this.addToCart = this.addToCart.bind(this);
-    this.removeProduct = this.removeProduct.bind(this);
   }
 
-  addToCart(product) {
-    this.props.onClickAdd(product);
-    this.props.onClickIncrement();
+  increase() {
+    const { products } = this.state;
+    this.setState({ products: products + 1 });
   }
 
-  removeProduct(product) {
-    this.props.onClickRemove(product);
-    this.props.onClickDecrement();
+  decrease() {
+    const { products } = this.state;
+    if (products > 0) this.setState({ products: products - 1 });
   }
 
   componentDidMount() {
@@ -38,10 +36,27 @@ class ShopCart extends React.Component {
       <div>
         <ProductListCart products={products} />
         <div>
-        <button type="button" data-testid="product-increase-quantity" onClick={() => this.addToCart(products)}>+</button>
-            <p>{products.quantidade}</p>
-            <p data-testid="shopping-cart-product-quantity">{products.quantidade}</p>
-            <button type="button" data-testid="product-decrease-quantity" onClick={() => this.removeProduct(products)}>-</button>
+          <div>
+          <button
+            type="button"
+            data-testid="product-increase-quantity"
+            onClick={() => this.increase()}
+          >
+            +
+          </button>
+          </div>
+          <p>{products.quantidade}</p>
+          
+          <p data-testid="shopping-cart-product-quantity">{products.quantidade}</p>
+          <div>
+          <button
+            type="button"
+            data-testid="product-decrease-quantity"
+            onClick={() => this.decrease()}
+          >
+            -
+          </button>
+          </div>
         </div>
       </div>
     );
